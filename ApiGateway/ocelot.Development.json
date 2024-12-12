@@ -1,0 +1,97 @@
+{
+    "Routes": [
+        {
+            "UpstreamPathTemplate": "/Store/Coffeedrink/hot",
+            "UpstreamHttpMethod": [ "Get" ],
+            "DownstreamScheme": "https",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "api.sampleapis.com",
+                    "Port": 443
+                }
+            ],
+            "RateLimitOptions": {
+                "EnableRateLimiting": true,
+                "Period": "5s",
+                "Limit": 3,
+                "PeriodTimespan": 10
+            },
+            "DownstreamPathTemplate": "/coffee/hot"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Customer",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerwebapi",
+                    "Port": 80
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Customer"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Customer/{customerId}",
+            "UpstreamHttpMethod": [ "Get", "Delete" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "customerwebapi",
+                    "Port": 80
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Customer/{customerId}"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Product",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "productwebapi",
+                    "Port": 80
+                }
+            ],
+            "DownstreamPathTemplate": "/api/product"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Product/{productId}",
+            "UpstreamHttpMethod": [ "Get", "Delete" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "productwebapi",
+                    "Port": 80
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Product/{productId}"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Order",
+            "UpstreamHttpMethod": [ "Get", "Post", "Put" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "orderwebapi",
+                    "Port": 80
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Order"
+        },
+        {
+            "UpstreamPathTemplate": "/api/Order/{orderId}",
+            "UpstreamHttpMethod": [ "Get", "Delete" ],
+            "DownstreamScheme": "http",
+            "DownstreamHostAndPorts": [
+                {
+                    "Host": "orderwebapi",
+                    "Port": 80
+                }
+            ],
+            "DownstreamPathTemplate": "/api/Order/{orderId}"
+        }
+    ],
+    "GlobalConfiguration": {
+        "BaseUrl": "https://api.sampleapis.com"
+    }
+}
